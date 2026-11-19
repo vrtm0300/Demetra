@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Condizioni di prenotazione · Demetra</title>
+<meta name="description" content="Condizioni di prenotazione delle camere di Demetra.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1D2919">
+<link rel="icon" type="image/webp" href="img/logo-albero.webp">
+<link rel="preload" as="font" type="font/woff2" href="font/YoungSerif-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="font/Karla-400.woff2" crossorigin>
+<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+<header class="testata"><div class="wrap">
+  <a class="marchio" href="index.html" aria-label="Demetra, pagina iniziale"><img src="img/logo-albero.webp" width="200" height="290" alt=""><span class="scritte"><img src="img/logo-scritta.webp" width="505" height="152" alt="Demetra"><small>azienda agricola</small></span></a>
+  <a class="btn btn-pieno prenota-mob" href="camere.html#prenota">Prenota</a>
+  <button class="apri" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav class="menu" id="menu" aria-label="Menu principale"><a href="camere.html">Camere</a><a href="bottega.html">Bottega</a><a href="laboratori.html">Laboratori</a><a href="dove-siamo.html">Dove siamo</a><a class="btn btn-pieno" href="camere.html#prenota">Prenota</a></nav>
+</div></header>
+<main>
+<section class="wrap stretto legale-pag"><h1>Condizioni di prenotazione</h1>
+<h2>Come si prenota</h2>
+<p>Si prenota direttamente con Gemma, su WhatsApp, per telefono o per email. Ti confermiamo disponibilità e prezzo totale. La prenotazione è confermata quando riceviamo l'acconto del 35%; il resto si paga all'arrivo.</p>
+<h2>Arrivo e partenza</h2>
+<p>Check-in dalle 15 alle 18. Check-out entro le 10. Per arrivi fuori orario scrivici prima.</p>
+<h2>Cancellazione</h2>
+<p>La cancellazione è gratuita fino a 14 giorni prima dell'arrivo: l'acconto viene restituito. Dopo questo termine l'acconto non è rimborsabile.</p>
+<h2>Animali</h2>
+<p>Gli animali sono ammessi su richiesta, con un supplemento di 25 €.</p>
+<h2>Altro</h2>
+<p>La struttura è per non fumatori. Colazione di cortesia inclusa. L'imposta di soggiorno, se dovuta, si paga in struttura.</p>
+<p>Codice identificativo nazionale (CIN) IT065087B5XTQGA2RL · CUSR 15065087EXT0023.</p></section>
+</main>
+<footer class="piede"><div class="wrap">
+  <div class="colonne">
+    <div><p class="motto">…dalla terra alla tavola</p><p>Azienda agricola, laboratorio e camere<br>Via Padre Giovanni Semeria (ex via Vascella)<br>84034 Padula (SA)</p><p><a href="https://www.google.com/maps/dir/?api=1&destination=40.333263,15.653617" target="_blank" rel="noopener">Indicazioni stradali</a></p></div>
+    <div><h4>Il sito</h4><ul><li><a href="camere.html">Camere</a></li><li><a href="bottega.html">Bottega</a></li><li><a href="laboratori.html">Laboratori</a></li><li><a href="dove-siamo.html">Dove siamo</a></li></ul></div>
+    <div><h4>Contatti</h4><ul><li><a href="tel:+393207963499">320 796 3499</a></li><li><a href="https://wa.me/393207963499" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:sarligemma@gmail.com">sarligemma@gmail.com</a></li><li><a href="https://www.instagram.com/aziendaagricolademetra" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/demetra.azienda.agricola" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+    <div><h4>Dati</h4><p class="legale">"Demetra" di Gemma Sarli<br>P. IVA 04894080656 · REA SA-402374<br>PEC sarligemmademetra@pec.it<br>CIN IT065087B5XTQGA2RL<br>CUSR 15065087EXT0023</p></div>
+  </div>
+  <div class="fondo"><span>© 2026 Demetra</span><nav><a href="privacy.html">Privacy e cookie</a><a href="condizioni.html">Condizioni di prenotazione</a><a href="https://www.monacidigitali.it" target="_blank" rel="noopener">Sito di Monaci Digitali</a></nav></div>
+</div></footer>
+<script>(function(){
+  var b=document.querySelector('.apri'),m=document.querySelector('.menu');
+  if(b){b.addEventListener('click',function(){var o=m.classList.toggle('aperto');b.setAttribute('aria-expanded',o);b.textContent=o?'Chiudi':'Menu';});}
+  var f=document.querySelector('#modulo-prenota');
+  if(f){
+    var oggi=new Date().toISOString().slice(0,10);
+    f.querySelectorAll('input[type=date]').forEach(function(i){i.min=oggi;});
+    document.querySelectorAll('[data-camera]').forEach(function(a){a.addEventListener('click',function(){f.camera.value=a.getAttribute('data-camera');});});
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var a=f.arrivo.value,p=f.partenza.value,es=f.querySelector('.esito');
+      if(!a||!p||p<=a){es.textContent='Scegli la data di arrivo e una data di partenza successiva.';return;}
+      function it(d){var x=d.split('-');return x[2]+'/'+x[1]+'/'+x[0];}
+      var c=f.camera.value,t='Ciao Gemma, vorrei prenotare '+(c?'la '+c:'una camera')+' dal '+it(a)+' al '+it(p)+', '+f.ospiti.value+'. È disponibile?';
+      window.open('https://wa.me/393207963499?text='+encodeURIComponent(t),'_blank','noopener');
+      es.textContent='Si apre WhatsApp con la richiesta già scritta. Se non si apre, chiama il 320 796 3499.';
+    });
+  }
+})();
+</script>
+</body>
+</html>
